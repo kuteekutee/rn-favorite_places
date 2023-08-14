@@ -5,5 +5,6 @@ export const Colors = {
   primary400: "#C8AE7D",
   primary700: "#765827",
   primary800: "#F94C10",
-  gray700: "#65451F",
+  //gray700: "#65451F",
+  darkbrown: "#65451F",
 };

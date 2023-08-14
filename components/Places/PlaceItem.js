@@ -16,7 +16,7 @@ function PlaceItem({ place, onSelect }) {
         </View>
       </View>
       <View style={styles.iconContainer}>
-        <Ionicons name="caret-forward" size={24} color={Colors.gray700} />
+        <Ionicons name="caret-forward" size={24} color={Colors.darkbrown} />
       </View>
     </Pressable>
   );
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 12,
-    color: Colors.gray700,
+    color: Colors.darkbrown,
     marginBottom: 8,
   },
   address: {
     fontSize: 12,
-    color: Colors.gray700,
+    color: Colors.darkbrown,
   },
   iconContainer: {
     flex: 1,

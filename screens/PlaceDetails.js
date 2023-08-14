@@ -21,7 +21,10 @@ function PlaceDetails({ route, navigation }) {
       const place = await fetchPlaceDetails(selectedPlaceId);
       setFetchedPlace(place);
       navigation.setOptions({
-        title: place.title,
+        title:
+          place.title.length <= 30
+            ? place.title
+            : place.title.substring(0, 30) + " ...",
       });
     }
     loadPlaceData();
@@ -44,9 +47,6 @@ function PlaceDetails({ route, navigation }) {
     <ScrollView styles={styles.screen}>
       <Image style={styles.image} source={{ uri: fetchedPlace.imageUri }} />
       <View style={styles.locationContainer}>
-        <View style={styles.addressContainer}>
-          <Text style={styles.address}>{fetchedPlace.address}</Text>
-        </View>
         <View style={styles.outlineButtonsContainer}>
           <OutlinedButton icon="map" onPress={showOnMapHandler}>
             View on Map
@@ -57,6 +57,19 @@ function PlaceDetails({ route, navigation }) {
           >
             Delete Place
           </OutlinedButton>
+        </View>
+
+        <View style={styles.addressContainer}>
+          <Text style={styles.label}>Place:{" " + fetchedPlace.title}</Text>
+          <Text style={styles.label}>
+            Address:{" " + fetchedPlace.location.address}
+          </Text>
+          <Text style={styles.label}>
+            Latitude:{" " + fetchedPlace.location.lat.toFixed(4)}
+          </Text>
+          <Text style={styles.label}>
+            Longitude:{" " + fetchedPlace.location.lng.toFixed(4)}
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -75,15 +88,19 @@ const styles = StyleSheet.create({
   locationContainer: {
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 6,
   },
   addressContainer: {
-    padding: 20,
+    paddingLeft: 12,
+    paddingRight: 12,
+    alignItems: "flex-start",
   },
-  address: {
-    color: Colors.primary500,
+  label: {
+    color: Colors.primary200,
     textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 16,
+    // fontWeight: "bold",
+    fontSize: 18,
+    marginVertical: 8,
   },
   fallback: {
     flex: 1,

@@ -16,7 +16,7 @@ function Map({ navigation, route }) {
   const region = {
     latitude: initialLocation ? initialLocation.lat : 1.3146,
     longitude: initialLocation ? initialLocation.lng : 103.8454,
-    latitudeDelta: 0.0922,
+    latitudeDelta: 0.1922,
     longitudeDelta: 0.0421,
   };
 
@@ -82,6 +82,8 @@ export default Map;
 
 const styles = StyleSheet.create({
   map: {
+    margin: 20,
+    borderRadius: 20,
     flex: 1,
   },
 });

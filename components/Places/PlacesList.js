@@ -35,13 +35,13 @@ export default PlacesList;
 const styles = StyleSheet.create({
   list: {
     margin: 4,
-    backgroundColor: Colors.gray700,
+    backgroundColor: Colors.darkbrown,
   },
   fallbackContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.gray700,
+    backgroundColor: Colors.darkbrown,
   },
   fallbackText: {
     fontSize: 16,

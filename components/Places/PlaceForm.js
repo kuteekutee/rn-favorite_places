@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   form: {
     flex: 1,
     padding: 10,
-    backgroundColor: Colors.gray700,
+    backgroundColor: Colors.darkbrown,
   },
   label: {
     fontWeight: "bold",

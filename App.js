@@ -33,7 +33,7 @@ export default function App() {
         screenOptions={{
           headerStyle: { backgroundColor: Colors.primary200 },
           headerTintColor: "#fff",
-          contentStyle: { backgroundColor: Colors.gray700 },
+          contentStyle: { backgroundColor: Colors.darkbrown },
         }}
       >
         <Stack.Screen
@@ -102,9 +102,11 @@ export default function App() {
             screenOptions={{
               headerStyle: { backgroundColor: Colors.primary200 },
               headerTintColor: "#fff",
-              contentStyle: { backgroundColor: Colors.gray700 },
+              contentStyle: {
+                backgroundColor: Colors.darkbrown,
+              },
               tabBarActiveTintColor: Colors.primary800,
-              tabBarInactiveTintColor: Colors.gray700,
+              tabBarInactiveTintColor: Colors.darkbrown,
             }}
           >
             <Tab.Screen
@@ -113,7 +115,7 @@ export default function App() {
               options={{
                 tabBarLabel: "Home",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="home" color={color} size={size} />
+                  <Ionicons name="home" color={color} size={30} />
                 ),
                 headerShown: false,
               }}
@@ -124,7 +126,7 @@ export default function App() {
               options={{
                 tabBarLabel: "My Places",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="list" color={color} size={size} />
+                  <Ionicons name="list" color={color} size={30} />
                 ),
                 headerShown: false,
               }}
@@ -135,7 +137,11 @@ export default function App() {
               options={{
                 tabBarLabel: "Info",
                 tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="md-information" color={color} size={size} />
+                  <Ionicons
+                    name="information-circle-outline"
+                    color={color}
+                    size={30}
+                  />
                 ),
                 headerShown: true,
               }}
@@ -144,7 +150,7 @@ export default function App() {
         </NavigationContainer>
       </View>
 
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
     </>
   );
 }
