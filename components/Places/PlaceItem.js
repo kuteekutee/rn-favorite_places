@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 1 },
     shadowRadius: 2,
     borderRadius: 8,
+    height: 100,
   },
   pressed: {
     opacity: 0.9,
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     flex: 4,
     borderBottomLeftRadius: 4,
     borderTopLeftRadius: 4,
-    height: 90,
+    height: 100,
+    overflow: "hidden",
   },
   infoContainer: {
     flex: 8,
@@ -54,13 +56,13 @@ const styles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "space-evenly",
   },
   title: {
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 14,
     color: Colors.darkbrown,
-    marginBottom: 8,
+    // marginBottom: 8,
   },
   address: {
     fontSize: 12,

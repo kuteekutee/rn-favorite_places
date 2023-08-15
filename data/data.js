@@ -49,7 +49,7 @@ export const data = [
   {
     title: "D'Resort @ Downtown East",
     imageUri:
-      "https://lh3.googleusercontent.com/gps-proxy/AF-Tc0SebyHlKh2wWdQn4-sHM6VwsSZLmh756PjNQ612S56Ag8byf0WPh8IjSecaUOH3iOHVmPc3s6zhbCbkhDRQmLXNFpOEAx9wta7D0hWtpxPNXR9uXC27LYXptqtNbRSEP-aFqD0ULzxzBvfRTUVVEa4JJVO3_brGpMycrlwPeN06hyudwlse5x4Z=w408-h272-k-no",
+      "https://lh3.googleusercontent.com/gps-proxy/AF-Tc0RG3vYKAtgTeDl64zvlQM6Z0gbJFG4VxxdkH-QPRWLzrxab7vLu2uFFz9ulj0exzQgWR1nuM-Aj1msaJL1_9rm7R2cCiL-zLAAM7TDyGM6zDSyG6A939Z_mLRXapuDjIcmAbZkecphfUP0TvsDkOVmO_XW-RMyynUzj2qbVJ7VYsevpMDZEB926=w408-h272-k-no",
 
     location: {
       lat: 1.3806177694285169,

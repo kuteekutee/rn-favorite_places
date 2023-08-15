@@ -32,7 +32,7 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: { backgroundColor: Colors.primary200 },
-          headerTintColor: "#fff",
+          headerTintColor: Colors.darkbrown,
           contentStyle: { backgroundColor: Colors.darkbrown },
         }}
       >
@@ -45,7 +45,7 @@ export default function App() {
               <IconButton
                 icon="add-circle-outline"
                 size={30}
-                color="#fff"
+                color={Colors.darkbrown}
                 onPress={() => navigation.navigate("AddPlace")}
               />
             ),
@@ -101,7 +101,7 @@ export default function App() {
           <Tab.Navigator
             screenOptions={{
               headerStyle: { backgroundColor: Colors.primary200 },
-              headerTintColor: "#fff",
+              headerTintColor: Colors.darkbrown,
               contentStyle: {
                 backgroundColor: Colors.darkbrown,
               },
@@ -113,7 +113,7 @@ export default function App() {
               name="Home"
               component={WelcomeScreen}
               options={{
-                tabBarLabel: "Home",
+                tabBarLabel: "Welcome",
                 tabBarIcon: ({ color, size }) => (
                   <Ionicons name="home" color={color} size={30} />
                 ),
@@ -135,6 +135,7 @@ export default function App() {
               name="Info"
               component={InfoScreen}
               options={{
+                title: "About & Usage",
                 tabBarLabel: "Info",
                 tabBarIcon: ({ color, size }) => (
                   <Ionicons
@@ -150,7 +151,7 @@ export default function App() {
         </NavigationContainer>
       </View>
 
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
     </>
   );
 }
