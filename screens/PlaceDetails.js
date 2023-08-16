@@ -1,4 +1,12 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Share,
+} from "react-native";
 import OutlinedButton from "../UI/OutlinedButton";
 import { Colors } from "../constants/colors";
 import { useEffect, useState } from "react";
@@ -20,11 +28,32 @@ function PlaceDetails({ route, navigation }) {
     async function loadPlaceData() {
       const place = await fetchPlaceDetails(selectedPlaceId);
       setFetchedPlace(place);
+
+      const title =
+        place.title.length <= 30
+          ? place.title
+          : place.title.substring(0, 30) + " ...";
       navigation.setOptions({
-        title:
-          place.title.length <= 30
-            ? place.title
-            : place.title.substring(0, 30) + " ...",
+        title: title,
+        headerRight: () => (
+          <Pressable
+            onPress={() => {
+              Share.share({
+                message: `Place: ${"" + title}\n\nAddress: ${
+                  "" + place.location?.address
+                }\n\n`,
+                url: place?.imageUri,
+              })
+                .then((result) => console.log(result))
+                .catch((errorMsg) => console.log(errorMsg));
+            }}
+          >
+            <Image
+              style={{ width: 30, height: 30 }}
+              source={require("../assets/share-icon.png")}
+            />
+          </Pressable>
+        ),
       });
     }
     loadPlaceData();
