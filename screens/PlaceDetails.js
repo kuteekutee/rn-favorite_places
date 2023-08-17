@@ -45,7 +45,9 @@ function PlaceDetails({ route, navigation }) {
 
   return (
     <ScrollView styles={styles.screen}>
-      <Image style={styles.image} source={{ uri: fetchedPlace.imageUri }} />
+      <View style={styles.imageContainer}>
+        <Image style={styles.image} source={{ uri: fetchedPlace.imageUri }} />
+      </View>
       <View style={styles.locationContainer}>
         <View style={styles.outlineButtonsContainer}>
           <OutlinedButton icon="map" onPress={showOnMapHandler}>
@@ -59,17 +61,27 @@ function PlaceDetails({ route, navigation }) {
           </OutlinedButton>
         </View>
 
-        <View style={styles.addressContainer}>
-          <Text style={styles.label}>Place:{" " + fetchedPlace.title}</Text>
-          <Text style={styles.label}>
-            Address:{" " + fetchedPlace.location.address}
-          </Text>
-          <Text style={styles.label}>
-            Latitude:{" " + fetchedPlace.location.lat.toFixed(4)}
-          </Text>
-          <Text style={styles.label}>
-            Longitude:{" " + fetchedPlace.location.lng.toFixed(4)}
-          </Text>
+        <View style={styles.detailsContainer}>
+          <View style={styles.labelTextContainer}>
+            <Text style={styles.label}>Place</Text>
+            <Text style={styles.text}>{fetchedPlace.title}</Text>
+          </View>
+          <View style={styles.labelTextContainer}>
+            <Text style={styles.label}>Address</Text>
+            <Text style={styles.text}>{fetchedPlace.location.address}</Text>
+          </View>
+          <View style={styles.labelTextContainer}>
+            <Text style={styles.label}>Latitude</Text>
+            <Text style={styles.text}>
+              {fetchedPlace.location.lat.toFixed(4)}
+            </Text>
+          </View>
+          <View style={styles.labelTextContainer}>
+            <Text style={styles.label}>Longitude</Text>
+            <Text style={styles.text}>
+              {fetchedPlace.location.lng.toFixed(4)}
+            </Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -80,27 +92,49 @@ const styles = StyleSheet.create({
   screen: {
     alignItems: "center",
   },
+  imageContainer: {
+    padding: 12,
+  },
   image: {
-    height: "35%",
     minHeight: 300,
     width: "100%",
+    borderColor: Colors.darkbrown,
+    borderWidth: 1,
+    borderRadius: 8,
   },
   locationContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 6,
   },
-  addressContainer: {
+  detailsContainer: {
+    margiTop: 12,
     paddingLeft: 12,
     paddingRight: 12,
     alignItems: "flex-start",
   },
+  labelTextContainer: {
+    flexDirection: "row",
+    marginTop: 8,
+    flexWrap: "wrap",
+  },
   label: {
+    color: Colors.primary700,
+    backgroundColor: Colors.primary200,
+    textAlign: "center",
+    fontWeight: "bold",
+    padding: 4,
+    borderColor: Colors.primary200,
+    borderWidth: 1,
+    borderRadius: 8,
+    flex: 1,
+    textAlignVertical: "center",
+  },
+  text: {
     color: Colors.primary200,
     textAlign: "center",
-    // fontWeight: "bold",
-    fontSize: 18,
-    marginVertical: 8,
+    paddingLeft: 4,
+    paddingTop: 4,
+    flex: 4,
   },
   fallback: {
     flex: 1,
