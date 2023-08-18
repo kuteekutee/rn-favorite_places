@@ -1,8 +1,18 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import OutlinedButton from "../UI/OutlinedButton";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+// import OutlinedButton from "../UI/OutlinedButton";
 import { Colors } from "../constants/colors";
 import { useEffect, useState } from "react";
 import { deletePlace, fetchPlaceDetails } from "../util/database";
+
+import { MaterialIcons } from "@expo/vector-icons"; // Import
 
 function PlaceDetails({ route, navigation }) {
   const [fetchedPlace, setFetchedPlace] = useState();
@@ -38,10 +48,36 @@ function PlaceDetails({ route, navigation }) {
     );
   }
 
-  async function deletePlaceHandler() {
-    await deletePlace(selectedPlaceId);
-    navigation.goBack();
+  function deletePlaceHandler() {
+    Alert.alert(
+      "Delete Place",
+      `Are you sure you want to delete your favorite place ${fetchedPlace.title}`,
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: async () => {
+            await deletePlace(selectedPlaceId);
+            navigation.goBack();
+            console.log("OK Pressed");
+          },
+        },
+      ]
+    );
   }
+
+  const OutlinedButton = ({ icon, onPress, children }) => {
+    return (
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <MaterialIcons name={icon} size={24} color={Colors.primary200} />
+        <Text style={styles.buttonText}>{children}</Text>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <ScrollView styles={styles.screen}>
@@ -61,25 +97,21 @@ function PlaceDetails({ route, navigation }) {
           </OutlinedButton>
         </View>
 
-        <View style={styles.detailsContainer}>
-          <View style={styles.labelTextContainer}>
-            <Text style={styles.label}>Place</Text>
-            <Text style={styles.text}>{fetchedPlace.title}</Text>
-          </View>
-          <View style={styles.labelTextContainer}>
-            <Text style={styles.label}>Address</Text>
-            <Text style={styles.text}>{fetchedPlace.location.address}</Text>
-          </View>
-          <View style={styles.labelTextContainer}>
-            <Text style={styles.label}>Latitude</Text>
-            <Text style={styles.text}>
-              {fetchedPlace.location.lat.toFixed(4)}
+        <View style={styles.addressContainer}>
+          <Text style={styles.title}>Place:</Text>
+          <Text style={styles.addressText}>{fetchedPlace.title}</Text>
+          <Text style={styles.title}>Address:</Text>
+          <Text style={styles.addressText}>
+            {fetchedPlace.location.address}
+          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.title}>Lat:</Text>
+            <Text style={styles.label}>
+              {"  " + fetchedPlace.location.lat.toFixed(4) + "  "}
             </Text>
-          </View>
-          <View style={styles.labelTextContainer}>
-            <Text style={styles.label}>Longitude</Text>
-            <Text style={styles.text}>
-              {fetchedPlace.location.lng.toFixed(4)}
+            <Text style={styles.title}>Long:</Text>
+            <Text style={styles.label}>
+              {"  " + fetchedPlace.location.lng.toFixed(4) + "  "}
             </Text>
           </View>
         </View>
@@ -105,36 +137,20 @@ const styles = StyleSheet.create({
   locationContainer: {
     justifyContent: "center",
     alignItems: "center",
+    // marginTop: 10,
+    // top: 10,
   },
-  detailsContainer: {
-    margiTop: 12,
+  addressContainer: {
     paddingLeft: 12,
     paddingRight: 12,
-    alignItems: "flex-start",
-  },
-  labelTextContainer: {
-    flexDirection: "row",
-    marginTop: 8,
-    flexWrap: "wrap",
+    alignItems: "center",
   },
   label: {
-    color: Colors.primary700,
-    backgroundColor: Colors.primary200,
-    textAlign: "center",
-    fontWeight: "bold",
-    padding: 4,
-    borderColor: Colors.primary200,
-    borderWidth: 1,
-    borderRadius: 8,
-    flex: 1,
-    textAlignVertical: "center",
-  },
-  text: {
     color: Colors.primary200,
     textAlign: "center",
-    paddingLeft: 4,
-    paddingTop: 4,
-    flex: 4,
+    // fontWeight: "bold",
+    fontSize: 18,
+    marginVertical: 8,
   },
   fallback: {
     flex: 1,
@@ -143,6 +159,47 @@ const styles = StyleSheet.create({
   },
   outlineButtonsContainer: {
     flexDirection: "row",
+  },
+  title: {
+    color: Colors.primary200,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginVertical: 2,
+    textTransform: "uppercase",
+    textDecorationLine: "underline",
+    top: 5,
+  },
+  addressText: {
+    color: Colors.primary200,
+    textAlign: "center",
+    fontSize: 15,
+    marginVertical: 13,
+    top: -10,
+  },
+  button: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 50, // Make the button oval-shaped
+    backgroundColor: "transparent",
+    elevation: 2, // Elevation (for shadow)
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    marginVertical: 10, // Adjust this value for spacing
+    marginHorizontal: 10, // Adjust this value for spacing
+  },
+  buttonText: {
+    color: Colors.primary200,
+    fontSize: 16,
+    marginLeft: 8,
   },
 });
 

@@ -39,10 +39,10 @@ function WelcomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        style={{ width: 300, height: 200 }}
+        style={{ width: "80%", height: "20%" }}
         source={require("../assets/adaptive-icon.png")}
       />
-      <Text style={styles.text}>Welcome</Text>
+      <Text style={styles.text}>My Favorite Places</Text>
       {uploadedImages.length > 0 && (
         <View style={styles.imageContainer}>
           <Image
@@ -66,9 +66,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkbrown,
   },
   text: {
-    color: Colors.primary400,
-    fontSize: 18,
-    marginBottom: 10,
+    color: Colors.primary200,
+    fontSize: 20,
+    marginBottom: 8,
+    marginTop: 8,
   },
   imageContainer: {
     marginTop: 20,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   },
   subText: {
     color: Colors.primary400,
-    fontSize: 14,
+    fontSize: 16,
     textAlign: "center",
     marginTop: 10,
   },

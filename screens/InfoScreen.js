@@ -22,9 +22,9 @@ function InfoScreen({ navigation }) {
         <View style={styles.paragraphContainer}>
           <Text style={styles.paragraphHeader}>In a nutshell ... </Text>
           <Text style={styles.paragraph}>
-            A simple RN mobile app that can capture and save all your favorite
-            places. All that is requires is tht you enable the use of your phone
-            Location and allow permissions to use its Camera.
+            Quite a simple but useful RN mobile app that can capture and save
+            all your favorite places. The only requirements are that you enable
+            your phone Location hardware and the allow Camera permissions.
           </Text>
         </View>
         <View style={styles.paragraphContainer}>
@@ -64,8 +64,8 @@ function InfoScreen({ navigation }) {
           <View style={styles.paragraphContainer}>
             <Text style={styles.paragraphHeader}>Reset Application</Text>
             <Text style={styles.paragraph}>
-              Clear all favorite places and repopulate sample data for demo
-              purposes.
+              Clears all your favorite places and repopulates some sample data
+              for demo purposes.
             </Text>
           </View>
           <Pressable

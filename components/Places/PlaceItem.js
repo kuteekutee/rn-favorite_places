@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 16,
     color: Colors.darkbrown,
     // marginBottom: 8,
   },
   address: {
-    fontSize: 12,
+    fontSize: 14,
     color: Colors.darkbrown,
   },
   iconContainer: {

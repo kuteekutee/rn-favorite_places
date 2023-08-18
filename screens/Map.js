@@ -4,6 +4,17 @@ import MapView, { Marker } from "react-native-maps";
 import IconButton from "../UI/IconButton";
 
 function Map({ navigation, route }) {
+  // const [defaultLocation, setDefaultLocation] = useState();
+
+  // const getLocation = async () => {
+  //   let location = await getCurrentPositionAsync({});
+
+  //   return {
+  //     lat: location.coords.latitude,
+  //     lng: location.coords.longitude,
+  //   };
+  // };
+
   const initialLocation = route.params
     ? {
         lat: route.params.initialLat,
@@ -14,10 +25,10 @@ function Map({ navigation, route }) {
   const [selectedLocation, setSelectedLocation] = useState(initialLocation);
 
   const region = {
-    latitude: initialLocation ? initialLocation.lat : 1.3146,
-    longitude: initialLocation ? initialLocation.lng : 103.8454,
-    latitudeDelta: 0.1922,
-    longitudeDelta: 0.0421,
+    latitude: initialLocation ? initialLocation.lat : 1.347797,
+    longitude: initialLocation ? initialLocation.lng : 103.9477,
+    latitudeDelta: 0.005,
+    longitudeDelta: 0.005,
   };
 
   function selectLocationHandler(event) {
@@ -34,7 +45,7 @@ function Map({ navigation, route }) {
     if (!selectedLocation) {
       Alert.alert(
         "No location picked!",
-        "You have to pick a location! (by tapping on the map)"
+        "You have to pick a location by tapping on the map"
       );
       return;
     }
@@ -71,6 +82,8 @@ function Map({ navigation, route }) {
           coordinate={{
             latitude: selectedLocation.lat,
             longitude: selectedLocation.lng,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
           }}
         />
       )}
